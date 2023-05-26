@@ -1,45 +1,124 @@
 ﻿using Library.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using XYZ_Hotels.Migrations;
 using XYZ_Hotels.Repository;
 
 namespace XYZ_Hotels.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class HotelController : ControllerBase
     {
         private readonly IHotelRepo hot;
         public HotelController(IHotelRepo hot)
         {
+
             this.hot = hot;
         }
         [HttpGet]
-        public IEnumerable<Hotels>? Get()
+        public IEnumerable<hotels>? Get()
         {
-            return hot.GetHotels();
+            try
+            {
+                return hot.GetHotels();
+            }
+            catch(Exception)
+            {
+                return null;
+            }
+            
         }
 
         [HttpGet("{id}")]
-        public Hotels GetById(int HotelId)
+        public hotels? GetById(int HotelId)
         {
-            return hot.GetHotelsById(HotelId);
+            try
+            {
+                return hot.GetHotelsById(HotelId);
+            }
+            catch(Exception)
+            {
+                return null;
+            }
+           
         }
 
         [HttpPost]
-        public Hotels PostHotels(Hotels hotel)
+        public hotels? PostHotels(hotels hotel)
         {
-            return hot.PostHotels(hotel);
+            try
+            {
+                return hot.PostHotels(hotel);
+            }
+            catch(Exception)
+            {
+                return null;
+            }
+            
         }
         [HttpPut("{id}")]
-        public Hotels PutHotels(int HotelId, Hotels hotel)
+        public hotels? PutHotels(int HotelId, hotels hotel)
         {
-            return hot.PutHotels(HotelId, hotel);
+            try
+            {
+                return hot.PutHotels(HotelId, hotel);
+            }
+            catch(Exception)
+            {
+                return null;
+            }
+            
         }
         [HttpDelete("{id}")]
-        public Hotels DeleteHotels(int HotelId)
+        public hotels? DeleteHotels(int HotelId)
         {
-            return hot.DeleteHotels(HotelId);
+            try
+            {
+                return hot.DeleteHotels(HotelId);
+            }
+            catch
+            {
+                return null;
+            }
+           
+        }
+        [HttpGet("/count/{Rid}")]
+        public ActionResult<object>? Count(int Rid)
+        {
+            try
+            {
+                var result = hot.Count(Rid);
+                return Ok(result);
+            }
+            catch(Exception)
+            {
+                return null;
+            }
+           
+        }
+        [HttpGet("/room/list")]
+        public ActionResult<object>? CountList()
+        {
+            try
+            {
+                var result = hot.RoomList();
+                return Ok(result);
+            }
+            catch
+            {
+                return null;
+            }
+           
+        }
+        [HttpGet("/filter/Location")]
+
+        public ActionResult<object> HotelsByLocation(string Location)
+        {
+            var h = hot.GetHotelsByLocation(Location.ToLower());
+            return Ok(h);
         }
 
     }

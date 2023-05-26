@@ -4,11 +4,16 @@ namespace XYZ_Hotels.Repository
 {
     public interface IHotelRepo
     {
-        public IEnumerable<Hotels> GetHotels();
-        public Hotels GetHotelsById(int Hid);
-        public Hotels PostHotels(Hotels hotel);
-        public Hotels PutHotels(int HotelId, Hotels hotel);
-        public Hotels DeleteHotels(int HotelId);
+        public IEnumerable<hotels> GetHotels();
+        public hotels GetHotelsById(int Hid);
+        public hotels PostHotels(hotels hotel);
+        public hotels PutHotels(int HotelId, hotels hotel);
+        public hotels DeleteHotels(int HotelId);
+
+        public object Count(int Rid);
+        public object RoomList();
+
+        public object GetHotelsByLocation(string Location);
 
 
     }

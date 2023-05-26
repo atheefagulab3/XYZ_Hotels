@@ -17,7 +17,9 @@ namespace XYZ_Hotels.Repository
         }
         public Rooms GetRoomsById(int Rid)
         {
+
             return _hotelContext.Rooms.FirstOrDefault(x => x.Rid == Rid);
+
         }
 
         public Rooms PostRooms(Rooms rooms)
@@ -43,7 +45,9 @@ namespace XYZ_Hotels.Repository
             var hot = _hotelContext.Rooms.Find(Rid);
 
 
+
             _hotelContext.Rooms.Remove(hot);
+
             _hotelContext.SaveChanges();
 
             return hot;

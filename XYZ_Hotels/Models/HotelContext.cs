@@ -5,7 +5,7 @@ namespace XYZ_Hotels.Models
 {
     public class HotelContext : DbContext
     {
-        public DbSet<Hotels> Hotels { get; set; }
+        public DbSet<hotels> Hotels { get; set; }
 
         public DbSet<Rooms> Rooms { get; set; }
 

@@ -23,6 +23,7 @@ builder.Services.AddScoped<IHotelRepo, HotelRepo>();
 builder.Services.AddScoped<IRoomRepo, RoomRepo>();
 
 
+
 // Adding Authentication
 builder.Services.AddAuthentication(options =>
 {
@@ -44,6 +45,12 @@ builder.Services.AddAuthentication(options =>
         ValidIssuer = builder.Configuration["JWT:Issuer"],
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT:Key"]))
     };
+});
+
+
+builder.Services.AddControllers().AddNewtonsoftJson(options =>
+{
+    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
 });
 
 var app = builder.Build();

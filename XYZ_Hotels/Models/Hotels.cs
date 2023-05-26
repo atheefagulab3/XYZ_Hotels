@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Library.Models
 {
-    public class Hotels
+    public class hotels
     {
         [Key]
         public int Hid { get; set; }
