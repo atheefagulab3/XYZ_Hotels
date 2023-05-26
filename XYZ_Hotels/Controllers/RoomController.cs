@@ -34,15 +34,13 @@ namespace XYZ_Hotels.Controllers
         [HttpPut("{id}")]
         public Rooms PutRooms(int Rid, Rooms rooms)
         {
-            return hot.PutRooms(Rid,rooms);
+            return hot.PutRooms(Rid, rooms);
         }
         [HttpDelete("{id}")]
         public Rooms DeleteRooms(int Rid)
         {
             return hot.DeleteRooms(Rid);
         }
-
-
 
     }
 }

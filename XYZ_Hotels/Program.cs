@@ -20,31 +20,6 @@ builder.Services.AddControllers().AddNewtonsoftJson(options =>
     Newtonsoft.Json.ReferenceLoopHandling.Ignore;
 });
 builder.Services.AddScoped<IHotelRepo, HotelRepo>();
-builder.Services.AddScoped<IRoomRepo, RoomRepo>();
-
-
-// Adding Authentication
-builder.Services.AddAuthentication(options =>
-{
-    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-    options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
-})
-
-// Adding Jwt Bearer
-.AddJwtBearer(options =>
-{
-    options.SaveToken = true;
-    options.RequireHttpsMetadata = false;
-    options.TokenValidationParameters = new TokenValidationParameters()
-    {
-        ValidateIssuer = true,
-        ValidateAudience = true,
-        ValidAudience = builder.Configuration["JWT:Audience"],
-        ValidIssuer = builder.Configuration["JWT:Issuer"],
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT:Key"]))
-    };
-});
 
 var app = builder.Build();
 
