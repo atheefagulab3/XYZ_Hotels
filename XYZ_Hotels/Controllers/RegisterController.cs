@@ -1,17 +1,18 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using XYZ_Hotels.DB;
 using XYZ_Hotels.Models;
 
 namespace XYZ_Hotels.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UsersController : ControllerBase
+    public class RegisterController : ControllerBase
     {
         private readonly HotelContext _context;
 
-        public UsersController(HotelContext context)
+        public RegisterController(HotelContext context)
         {
             _context = context;
         }

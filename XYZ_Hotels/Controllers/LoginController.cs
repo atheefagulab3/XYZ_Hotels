@@ -5,18 +5,19 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using XYZ_Hotels.DB;
 using XYZ_Hotels.Models;
 
 namespace XYZ_Hotels.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class TokenController : ControllerBase
+    public class LoginController : ControllerBase
     {
         public IConfiguration _configuration;
         private readonly HotelContext _context;
 
-        public TokenController(IConfiguration config, HotelContext context)
+        public LoginController(IConfiguration config, HotelContext context)
         {
             _configuration = config;
             _context = context;

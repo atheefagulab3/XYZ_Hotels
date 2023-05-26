@@ -62,6 +62,7 @@ namespace XYZ_Hotels.Controllers
         [HttpPut("{id}")]
         public Rooms? PutRooms(int Rid, Rooms rooms)
         {
+
             try
             {
                 return hot.PutRooms(Rid, rooms);
@@ -71,6 +72,9 @@ namespace XYZ_Hotels.Controllers
                 return null;
             }
          
+
+       
+
         }
         [HttpDelete("{id}")]
         public Rooms? DeleteRooms(int Rid)

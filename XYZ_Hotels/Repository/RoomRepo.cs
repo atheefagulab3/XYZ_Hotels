@@ -1,6 +1,6 @@
 ﻿using Library.Models;
 using Microsoft.EntityFrameworkCore;
-using XYZ_Hotels.Models;
+using XYZ_Hotels.DB;
 
 namespace XYZ_Hotels.Repository
 {

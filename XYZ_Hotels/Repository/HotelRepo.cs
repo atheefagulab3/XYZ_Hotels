@@ -1,10 +1,10 @@
 ﻿using Library.Models;
 using Microsoft.EntityFrameworkCore;
-using XYZ_Hotels.Models;
+using XYZ_Hotels.DB;
 
 namespace XYZ_Hotels.Repository
 {
-    public class HotelRepo :IHotelRepo
+    public class HotelRepo : IHotelRepo
     {
         private readonly HotelContext _hotelContext;
         public HotelRepo(HotelContext con)
@@ -15,7 +15,7 @@ namespace XYZ_Hotels.Repository
         {
             return _hotelContext.Hotels.Include(x=>x.Rooms).ToList();
         }
-        public hotels GetHotelsById(int Hid)
+        public hotels GetHotelsbyId(int Hid)
         {
             return _hotelContext.Hotels.FirstOrDefault(x => x.Hid == Hid);
         }

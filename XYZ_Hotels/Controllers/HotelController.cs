@@ -7,7 +7,7 @@ using XYZ_Hotels.Repository;
 
 namespace XYZ_Hotels.Controllers
 {
-    [Route("api/[controller]")]
+   [Route("api/[controller]")]
     [ApiController]
     [Authorize]
     public class HotelController : ControllerBase
@@ -32,19 +32,7 @@ namespace XYZ_Hotels.Controllers
             
         }
 
-        [HttpGet("{id}")]
-        public hotels? GetById(int HotelId)
-        {
-            try
-            {
-                return hot.GetHotelsById(HotelId);
-            }
-            catch(Exception)
-            {
-                return null;
-            }
-           
-        }
+      
 
         [HttpPost]
         public hotels? PostHotels(hotels hotel)

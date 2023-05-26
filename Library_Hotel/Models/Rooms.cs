@@ -23,8 +23,5 @@ namespace Library.Models
         public int Price { get; set; }
 
         public hotels? Hotels { get; set; }
-
-
-
     }
 }

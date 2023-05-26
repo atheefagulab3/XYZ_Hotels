@@ -1,7 +1,8 @@
 ﻿using Library.Models;
 using Microsoft.EntityFrameworkCore;
+using XYZ_Hotels.Models;
 
-namespace XYZ_Hotels.Models
+namespace XYZ_Hotels.DB
 {
     public class HotelContext : DbContext
     {
@@ -11,9 +12,9 @@ namespace XYZ_Hotels.Models
 
         public DbSet<Users> Users { get; set; }
 
-       
+
         public HotelContext(DbContextOptions<HotelContext> options) : base(options) { }
-      
+
 
     }
 }

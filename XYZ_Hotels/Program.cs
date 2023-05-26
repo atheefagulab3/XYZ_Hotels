@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using XYZ_Hotels.Models;
+using XYZ_Hotels.DB;
 using XYZ_Hotels.Repository;
 //hello
 var builder = WebApplication.CreateBuilder(args);

@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-#nullable disable
+
 
 namespace XYZ_Hotels.Migrations
 {
