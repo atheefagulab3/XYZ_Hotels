@@ -30,29 +30,23 @@ namespace XYZ_Hotels.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Hid"));
 
-                    b.Property<int>("Feedback")
-                        .HasColumnType("int");
-
-                    b.Property<string>("HName")
+                    b.Property<string>("Feedback")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("HName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Htype")
+                        .HasColumnType("int");
+
                     b.Property<string>("Location")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Rating")
                         .HasColumnType("int");
 
-                    b.Property<int?>("RoomsRid")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TotalRooms")
-                        .HasColumnType("int");
-
                     b.HasKey("Hid");
-
-                    b.HasIndex("RoomsRid");
 
                     b.ToTable("Hotels");
                 });
@@ -65,6 +59,9 @@ namespace XYZ_Hotels.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Rid"));
 
+                    b.Property<int?>("HotelsHid")
+                        .HasColumnType("int");
+
                     b.Property<int>("Price")
                         .HasColumnType("int");
 
@@ -75,6 +72,8 @@ namespace XYZ_Hotels.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Rid");
+
+                    b.HasIndex("HotelsHid");
 
                     b.ToTable("Rooms");
                 });
@@ -91,11 +90,9 @@ namespace XYZ_Hotels.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Password")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("UserId");
@@ -103,16 +100,16 @@ namespace XYZ_Hotels.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("Library.Models.Hotels", b =>
-                {
-                    b.HasOne("Library.Models.Rooms", null)
-                        .WithMany("Hotels")
-                        .HasForeignKey("RoomsRid");
-                });
-
             modelBuilder.Entity("Library.Models.Rooms", b =>
                 {
-                    b.Navigation("Hotels");
+                    b.HasOne("Library.Models.Hotels", null)
+                        .WithMany("Rooms")
+                        .HasForeignKey("HotelsHid");
+                });
+
+            modelBuilder.Entity("Library.Models.Hotels", b =>
+                {
+                    b.Navigation("Rooms");
                 });
 #pragma warning restore 612, 618
         }

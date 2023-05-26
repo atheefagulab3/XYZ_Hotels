@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using XYZ_Hotels.Models;
+using XYZ_Hotels.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +11,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<HotelContext>(op => op.UseSqlServer(builder.Configuration.GetConnectionString("Connection")));
+builder.Services.AddScoped<IHotelRepo, HotelRepo>();
 
 var app = builder.Build();
 

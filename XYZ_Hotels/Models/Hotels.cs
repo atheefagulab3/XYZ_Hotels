@@ -16,9 +16,11 @@ namespace Library.Models
         public string? Location { get; set; }
         public int   Rating {get;set;}
 
-        public int TotalRooms { get; set; }
+        public int Htype { get; set; }
 
-        public int Feedback { get; set; }
+        public string? Feedback { get; set; }
+
+        public ICollection<Rooms>? Rooms { get; set; }
 
     }
 }

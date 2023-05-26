@@ -18,6 +18,6 @@ namespace Library.Models
 
         public int Price { get; set; }
 
-        public ICollection<Hotels>? Hotels { get; set; }
+        
     }
 }
