@@ -13,7 +13,7 @@ namespace XYZ_Hotels.Repository
         }
         public IEnumerable<Hotels> GetHotels()
         {
-            return _hotelContext.Hotels.ToList();
+            return _hotelContext.Hotels.Include(x=>x.Rooms).ToList();
         }
         public Hotels GetHotelsById(int Hid)
         {
